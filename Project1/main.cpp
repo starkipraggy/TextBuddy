@@ -26,8 +26,7 @@ int main(int argc, char* argv[]) {
 			return 0;  //exit program
 		} else if (command.compare("add") == 0) {
 			string line;
-			library.addCommand(&line);
-			cout << "added to " << filename << ": \"" << line << "\"" << endl;
+			library.addCommand();
 		} else if (command.compare("display") == 0) {
 			library.displayCommand(filename);
 		} else if (command.compare("clear") == 0) {

@@ -11,16 +11,17 @@ void TextBuddy::printCommandMessage() {
 	cout << "Command: ";
 }
 
-void TextBuddy::loadFileIntoVector(string filename) {
+void TextBuddy::loadFileIntoVector(string fileToOpen) {
 	std::fstream saveFile;
 	string line;
-	saveFile.open(filename, std::fstream::in);
+	saveFile.open(fileToOpen, std::fstream::in);
 	if (saveFile.is_open()) {
 		while (std::getline(saveFile, line)) {
 			textVector.push_back(line);
 		}
 	}
 	saveFile.close();
+	filename = fileToOpen;
 }
 
 void TextBuddy::clearCommand() {
@@ -47,13 +48,16 @@ void TextBuddy::displayCommand(string filename) {
 	}
 }
 
-void TextBuddy::addCommand(string* line) {
+void TextBuddy::addCommand() {
+	string line;
+
 	//grab rest of line
-	std::getline(cin, (*line));
+	std::getline(cin, line);
 
 	//strip leading whitespace
-	(*line) = std::regex_replace((*line), std::regex("^ +"), "");
-	textVector.push_back((*line));
+	line = std::regex_replace(line, std::regex("^ +"), "");
+	textVector.push_back(line);
+	cout << "added to " << filename << ": \"" << line << "\"" << endl;
 }
 
 void TextBuddy::deleteCommand(string* data) {

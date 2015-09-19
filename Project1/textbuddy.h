@@ -24,9 +24,10 @@ public:
 	void clearCommand();
 	void exitCommand(string filename);
 	void displayCommand(string filename);
-	void addCommand(string* line);
+	void addCommand();
 	void deleteCommand(string* data);
 
 private:
 	vector<string> textVector;
+	string filename;
 };
