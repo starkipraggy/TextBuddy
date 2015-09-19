@@ -1,3 +1,6 @@
+#ifndef __TEXTBUDDY_INCLUDED__
+#define __TEXTBUDDY_INCLUDED__
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -14,20 +17,24 @@ using std::endl;
 class TextBuddy {
 public:
 
+	bool hasNoFilenameArg(int argc);
 	void loadFileIntoVector(string filename);
 
 	// Print Messages
-	void printWelcomeMessage(string filename);
+	void printWelcomeMessage();
 	void printCommandMessage();
 	
 	// Command methods
 	void clearCommand();
-	void exitCommand(string filename);
-	void displayCommand(string filename);
+	void exitCommand();
+	void displayCommand();
 	void addCommand();
-	void deleteCommand(string* data);
+	void deleteCommand();
+	void rejectCommand();
 
 private:
 	vector<string> textVector;
 	string filename;
 };
+
+#endif

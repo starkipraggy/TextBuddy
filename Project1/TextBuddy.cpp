@@ -1,9 +1,18 @@
 #include "textbuddy.h"
 
-//Vector to store lines from file. Reserve some space prematurely for performance improvement
+//Intitialise with some space prematurely for performance improvement
 vector<string> textVector(30);
 
-void TextBuddy::printWelcomeMessage(string filename) {
+bool TextBuddy::hasNoFilenameArg(int argc) {
+	if (argc < 2) {
+		cout << "Please specify the filename" << endl;
+		return true;
+	} else {
+		return false;
+	}
+}
+
+void TextBuddy::printWelcomeMessage() {
 	cout << "Welcome to TextBuddy. " << filename << " is ready for use" << endl;
 }
 
@@ -26,9 +35,10 @@ void TextBuddy::loadFileIntoVector(string fileToOpen) {
 
 void TextBuddy::clearCommand() {
 	textVector.clear();
+	cout << "all content deleted from " << filename << endl;
 }
 
-void TextBuddy::exitCommand(string filename) {
+void TextBuddy::exitCommand() {
 	std::fstream saveFile;
 	saveFile.open(filename, std::fstream::out);
 	for (unsigned int i = 0; i < textVector.size(); i++) {
@@ -37,7 +47,7 @@ void TextBuddy::exitCommand(string filename) {
 	saveFile.close();
 }
 
-void TextBuddy::displayCommand(string filename) {
+void TextBuddy::displayCommand() {
 	if (textVector.size() <= 0) {
 		cout << filename << " is empty" << endl;
 	} else { 
@@ -60,10 +70,14 @@ void TextBuddy::addCommand() {
 	cout << "added to " << filename << ": \"" << line << "\"" << endl;
 }
 
-void TextBuddy::deleteCommand(string* data) {
+void TextBuddy::deleteCommand() {
 	int index;
 	cin >> index;
 	string line = textVector.at(index - 1);
 	textVector.erase(textVector.begin() + index - 1);
-	(*data) = line;
+	cout << "deleted from " << filename << ": \"" << line << "\"" << endl;
+}
+
+void TextBuddy::rejectCommand() {
+	cout << "invalid command" << endl;
 }
