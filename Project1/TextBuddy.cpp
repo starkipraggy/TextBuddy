@@ -44,8 +44,11 @@ bool TextBuddy::processCommand(string command) {
 	} else if (command.compare("delete") == 0) {
 		deleteCommand();
 		return false;
-	} else if (command.compare("sort") == 0){
+	} else if (command.compare("sort") == 0) {
 		sortCommand();
+		return false;
+	} else if (command.compare("search") == 0) {
+		searchCommand();
 		return false;
 	} else {
 		rejectCommand();
@@ -66,8 +69,6 @@ void TextBuddy::loadFileIntoVector(string fileToOpen) {
 	filename = fileToOpen;
 }
 
-//*****Private Methods*****//
-
 void TextBuddy::clearCommand() {
 	textVector.clear();
 	cout << "all content deleted from " << filename << endl;
@@ -86,7 +87,6 @@ void TextBuddy::displayCommand() {
 	if (textVector.size() <= 0) {
 		cout << filename << " is empty" << endl;
 	} else { 
-		//C++ iterators textVector.begin() ... 
 		for (unsigned int i = 0; i < textVector.size(); i++) {
 			cout << i + 1 << ". " << textVector.at(i) << endl;
 		}
@@ -120,3 +120,30 @@ void TextBuddy::sortCommand() {
 void TextBuddy::rejectCommand() {
 	cout << "invalid command" << endl;
 }
+
+vector<string> TextBuddy::searchCommand() {
+	string wordToFind;
+	//grab rest of line
+	cin >> wordToFind;
+
+	vector<string> result;
+	int foundCount = 1;
+
+	for (unsigned int i = 0; i < textVector.size(); i++) {
+		if (textVector.at(i).find(wordToFind) != string::npos) {
+			cout << foundCount++ << ". " << textVector.at(i) << endl;
+			result.push_back(textVector.at(i));
+		}
+	}
+
+	/*for (int i = 0; i < result.size(); i++) {
+		cout << result.at(i);
+	}*/
+
+	/*result.push_back(wordToFind);
+	result.push_back("bicycle rider");*/
+
+	return result;
+}
+
+//*****Private Methods*****//

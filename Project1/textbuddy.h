@@ -17,6 +17,9 @@ using std::endl;
 class TextBuddy {
 
 public:
+	
+	//getty methods
+	vector<string> readVector();
 
 	bool hasNoFilenameArg(int argc);
 	void loadFileIntoVector(string filename);
@@ -25,22 +28,21 @@ public:
 	void printWelcomeMessage();
 	void printCommandMessage();
 
-	bool processCommand(string command);
-	vector<string> readVector();
-
-private:
-	vector<string> textVector;
-	string filename;
-
 	// Command methods
+	bool processCommand(string command);
+
 	void clearCommand();
 	void exitCommand();
 	void displayCommand();
 	void addCommand();
 	void deleteCommand();
 	void sortCommand();
+	vector<string> searchCommand();
 	void rejectCommand();
 
+protected:
+	vector<string> textVector;
+	string filename;
 };
 
 #endif
