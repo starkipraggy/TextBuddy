@@ -1,7 +1,11 @@
 #include "textbuddy.h"
 
+//*****Attributes*****//
+
 //Intitialise with some space prematurely for performance improvement
 vector<string> textVector(30);
+
+//*****Public Methods*****//
 
 bool TextBuddy::hasNoFilenameArg(int argc) {
 	if (argc < 2) {
@@ -20,6 +24,28 @@ void TextBuddy::printCommandMessage() {
 	cout << "Command: ";
 }
 
+bool TextBuddy::processCommand(string command) {
+	if (command.compare("exit") == 0) {
+		exitCommand();
+		return true;
+	} else if (command.compare("add") == 0) {
+		addCommand();
+		return false;
+	} else if (command.compare("display") == 0) {
+		displayCommand();
+		return false;
+	} else if (command.compare("clear") == 0) {
+		clearCommand();
+		return false;
+	} else if (command.compare("delete") == 0) {
+		deleteCommand();
+		return false;
+	} else {
+		rejectCommand();
+		return false;
+	}
+}
+
 void TextBuddy::loadFileIntoVector(string fileToOpen) {
 	std::fstream saveFile;
 	string line;
@@ -32,6 +58,8 @@ void TextBuddy::loadFileIntoVector(string fileToOpen) {
 	saveFile.close();
 	filename = fileToOpen;
 }
+
+//*****Private Methods*****//
 
 void TextBuddy::clearCommand() {
 	textVector.clear();

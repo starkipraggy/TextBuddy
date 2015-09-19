@@ -15,6 +15,7 @@ using std::string;
 using std::endl;
 
 class TextBuddy {
+
 public:
 
 	bool hasNoFilenameArg(int argc);
@@ -23,7 +24,13 @@ public:
 	// Print Messages
 	void printWelcomeMessage();
 	void printCommandMessage();
-	
+
+	bool processCommand(string command);
+
+private:
+	vector<string> textVector;
+	string filename;
+
 	// Command methods
 	void clearCommand();
 	void exitCommand();
@@ -32,9 +39,6 @@ public:
 	void deleteCommand();
 	void rejectCommand();
 
-private:
-	vector<string> textVector;
-	string filename;
 };
 
 #endif
