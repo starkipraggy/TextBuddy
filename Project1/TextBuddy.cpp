@@ -7,7 +7,7 @@ vector<string> textVector(30);
 
 //*****Public Methods*****//
 
-vector<string> TextBuddy::readVector() {
+vector<string> TextBuddy::getVector() {
 	return textVector;
 }
 
@@ -117,10 +117,6 @@ void TextBuddy::sortCommand() {
 	std::sort(textVector.begin(), textVector.end());
 }
 
-void TextBuddy::rejectCommand() {
-	cout << "invalid command" << endl;
-}
-
 vector<string> TextBuddy::searchCommand() {
 	string wordToFind;
 	//grab rest of line
@@ -144,6 +140,10 @@ vector<string> TextBuddy::searchCommand() {
 	result.push_back("bicycle rider");*/
 
 	return result;
+}
+
+void TextBuddy::rejectCommand() {
+	cout << "invalid command" << endl;
 }
 
 //*****Private Methods*****//

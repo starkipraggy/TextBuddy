@@ -19,7 +19,7 @@ class TextBuddy {
 public:
 	
 	//getty methods
-	vector<string> readVector();
+	vector<string> getVector();
 
 	bool hasNoFilenameArg(int argc);
 	void loadFileIntoVector(string filename);
