@@ -7,7 +7,7 @@ TextBuddy is a full Command Line Interface (CLI) to-do list program akin to Todo
 Commands:
 
 add <task>
-adds a task
+adds a task of name <task>
 
 display
 Displays all tasks.
@@ -20,3 +20,9 @@ Deletes the Nth task.
 
 exit
 Exits the program
+
+sort
+Sorts the list of tasks silently.
+
+search <word>
+Searches for tasks that contain the string <word>
