@@ -7,6 +7,10 @@ vector<string> textVector(30);
 
 //*****Public Methods*****//
 
+vector<string> TextBuddy::readVector() {
+	return textVector;
+}
+
 bool TextBuddy::hasNoFilenameArg(int argc) {
 	if (argc < 2) {
 		cout << "Please specify the filename" << endl;
@@ -39,6 +43,9 @@ bool TextBuddy::processCommand(string command) {
 		return false;
 	} else if (command.compare("delete") == 0) {
 		deleteCommand();
+		return false;
+	} else if (command.compare("sort") == 0){
+		sortCommand();
 		return false;
 	} else {
 		rejectCommand();
@@ -104,6 +111,10 @@ void TextBuddy::deleteCommand() {
 	string line = textVector.at(index - 1);
 	textVector.erase(textVector.begin() + index - 1);
 	cout << "deleted from " << filename << ": \"" << line << "\"" << endl;
+}
+
+void TextBuddy::sortCommand() {
+	std::sort(textVector.begin(), textVector.end());
 }
 
 void TextBuddy::rejectCommand() {

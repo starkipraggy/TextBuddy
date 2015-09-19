@@ -1,4 +1,7 @@
 #include "textbuddy.h"
+#include <string>
+
+using std::string;
 
 int main(int argc, char* argv[]) {
 	TextBuddy library;

@@ -26,6 +26,7 @@ public:
 	void printCommandMessage();
 
 	bool processCommand(string command);
+	vector<string> readVector();
 
 private:
 	vector<string> textVector;
@@ -37,6 +38,7 @@ private:
 	void displayCommand();
 	void addCommand();
 	void deleteCommand();
+	void sortCommand();
 	void rejectCommand();
 
 };
